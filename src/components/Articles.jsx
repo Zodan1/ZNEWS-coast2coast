@@ -11,16 +11,28 @@ export default function Articles() {
     });
   }, []);
   return (
-    <div>
+    <div className="articles-container">
+      {" "}
       {articles.map((article) => (
-        <div key={article.article_id}>
-          <h2>{article.title}</h2>
-          <p>Author: {article.author}</p> <p>Topic: {article.topic}</p>{" "}
-          <p>Created at: {new Date(article.created_at).toLocaleString()}</p>{" "}
-          <img src={article.article_img_url} alt={article.title} />{" "}
-          <p>Votes: {article.votes}</p> <p>Comments: {article.comment_count}</p>{" "}
+        <div className="article-box" key={article.article_id}>
+          {" "}
+          <img
+            className="article-img"
+            src={article.article_img_url}
+            alt={article.title}
+          />{" "}
+          <div className="article-content">
+            {" "}
+            <h2>{article.title}</h2> <p>Author: {article.author}</p>{" "}
+            <p>Created at: {new Date(article.created_at).toLocaleString()}</p>{" "}
+            <div className="votes-comments-box">
+              {" "}
+              <p>Votes: {article.votes}</p>{" "}
+              <p>Comments: {article.comment_count}</p>{" "}
+            </div>{" "}
+          </div>{" "}
         </div>
-      ))}
+      ))}{" "}
     </div>
   );
 }

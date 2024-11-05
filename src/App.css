@@ -1,3 +1,7 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .header_logo {
   width: 300px;
   height: 300px;
@@ -8,4 +12,34 @@
   display: flex;
   margin-right: auto;
   align-items: center;
+}
+.articles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.article-box {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.article-img {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+}
+.article-content {
+  padding: 20px;
+  position: relative;
+  flex: 1;
+}
+.votes-comments-box {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #f9f9f9;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
