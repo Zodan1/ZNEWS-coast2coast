@@ -14,3 +14,14 @@ export default function fetchArticles() {
       console.error("Error fetching articles", error);
     });
 }
+
+export function fetchArticleById(article_id) {
+  return api
+    .get(`/articles/${article_id}`)
+    .then((response) => {
+      return response.data.article;
+    })
+    .catch((error) => {
+      console.error("Error fetching Article_id", error);
+    });
+}
