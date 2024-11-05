@@ -64,3 +64,15 @@
 .navbar li a:hover {
   background-color: #111;
 }
+.comments-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+.comment-box {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.comment-box p {
+  margin: 5px 0;
+}

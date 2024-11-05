@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../utils/api";
+import Comments from "./Comments";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -28,6 +29,7 @@ export default function Article() {
         <p>Votes: {article.votes}</p>
         <p>Comments: {article.comment_count}</p>
       </div>
+      <Comments />
     </div>
   );
 }
