@@ -25,3 +25,15 @@ export function fetchArticleById(article_id) {
       console.error("Error fetching Article_id", error);
     });
 }
+
+export function fetchCommentsByArticleId(article_id) {
+  return api
+    .get(`/articles/${article_id}/comments`)
+    .then((response) => {
+      return response.data.comments;
+    })
+    .catch((error) => {
+      console.error("Error fetching Article_id", error);
+      return [];
+    });
+}
