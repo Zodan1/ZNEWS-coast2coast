@@ -37,3 +37,14 @@ export function fetchCommentsByArticleId(article_id) {
       return [];
     });
 }
+
+export function patchArticleVotes(article_id, votes) {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes: votes })
+    .then((response) => {
+      return response.data.updatedArticle;
+    })
+    .catch((error) => {
+      console.error("Error updating votes api", error);
+    });
+}
