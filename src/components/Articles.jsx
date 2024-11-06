@@ -30,8 +30,10 @@ export default function Articles() {
             <p>Author: {article.author}</p>
             <p>Created at: {new Date(article.created_at).toLocaleString()}</p>
             <div className="votes-comments-box">
-              <p>Votes: {article.votes}</p>
-              <p>Comments: {article.comment_count}</p>
+              <p>
+                Votes: {article.votes}
+                <br></br>Comments: {article.comment_count}
+              </p>
             </div>
           </div>
         </div>

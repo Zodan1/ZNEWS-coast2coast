@@ -3,6 +3,7 @@
 }
 .header {
   /* background-color: rgb(200, 206, 211); */
+  border-radius: 50px;
   background-image: linear-gradient(
     to right,
     rgba(200, 206, 211, 0),
@@ -56,6 +57,24 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  max-width: 100px;
+  max-height: 100px;
+  width: 25%;
+  height: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents overflow of text */
+}
+
+.votes-comments-box p {
+  margin: 0;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: clamp(8px, 1.5vw, 12px); /* Dynamically adjust font size */
 }
 
 .navbar {
