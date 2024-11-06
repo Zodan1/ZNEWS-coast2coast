@@ -20,7 +20,11 @@ export default function Article() {
 
   return (
     <div>
-      <img src={article.article_img_url} alt={article.title} />
+      <img
+        className="article-img2"
+        src={article.article_img_url}
+        alt={article.title}
+      />
       <h2>{article.title}</h2>
       <p>Author: {article.author}</p>
       <p>Topic: {article.topic}</p>
