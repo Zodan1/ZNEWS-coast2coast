@@ -67,10 +67,20 @@ export function postComment(article_id, { username, body }) {
       body,
     })
     .then((response) => {
-      console.log(response, "post response");
       return response.data.comment;
     })
     .catch((error) => {
       console.error("Error posting comment", error);
+    });
+}
+export function deleteComment(comment_id) {
+  return api
+    .delete(`/comments/${comment_id}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error("Error deleting comment", error);
+      throw error;
     });
 }
