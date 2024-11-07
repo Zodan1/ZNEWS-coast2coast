@@ -10,9 +10,9 @@ export default function Navbar() {
       <li>
         <Link to="/articles">Articles</Link>
       </li>
-      {/* <li>
-        <Link to="/article/1">Article</Link>
-      </li> */}
+      <li>
+        <Link to="/users">Login</Link>
+      </li>
     </ul>
   );
 }

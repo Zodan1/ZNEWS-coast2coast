@@ -15,6 +15,17 @@ export default function fetchArticles() {
     });
 }
 
+export function fetchUsers() {
+  return api
+    .get(`/users`)
+    .then((response) => {
+      return response.data.users;
+    })
+    .catch((error) => {
+      console.error("Error fetching users", error);
+    });
+}
+
 export function fetchArticleById(article_id) {
   return api
     .get(`/articles/${article_id}`)
