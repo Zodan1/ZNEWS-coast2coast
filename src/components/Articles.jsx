@@ -12,6 +12,8 @@ export default function Articles() {
     });
   }, []);
 
+  //add loading 26 isLoading
+
   return (
     <div className="articles-container">
       {articles.map((article) => (

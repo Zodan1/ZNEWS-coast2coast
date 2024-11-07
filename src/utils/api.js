@@ -48,3 +48,18 @@ export function patchArticleVotes(article_id, votes) {
       console.error("Error updating votes api", error);
     });
 }
+
+export function postComment(article_id, { username, body }) {
+  return api
+    .post(`/articles/${article_id}/comments`, {
+      username,
+      body,
+    })
+    .then((response) => {
+      console.log(response, "post response");
+      return response.data.comment;
+    })
+    .catch((error) => {
+      console.error("Error posting comment", error);
+    });
+}

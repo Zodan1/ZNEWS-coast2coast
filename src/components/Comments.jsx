@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCommentsByArticleId } from "../utils/api";
+import CommentForm from "./CommentForm";
 
 export default function Comments() {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetchCommentsByArticleId(article_id).then((commentData) => {
-      setComments(commentData);
-    });
+    fetchCommentsByArticleId(article_id)
+      .then((commentData) => {
+        setComments(commentData);
+      })
+      .catch((error) => {
+        console.error("Error fetching comments", error);
+      });
   }, [article_id]);
+
+  const handleCommentSubmit = (newComment) => {
+    setComments((prevComments) => [newComment, ...prevComments]);
+  };
 
   if (comments.length === 0) {
     return <p>No comments yet. Be the first to comment!</p>;
@@ -18,6 +27,10 @@ export default function Comments() {
   return (
     <div className="comments-container">
       {" "}
+      <CommentForm
+        article_id={article_id}
+        onCommentSubmit={handleCommentSubmit}
+      />
       {comments.map((comment) => (
         <div key={comment.comment_id} className="comment-box">
           {" "}
