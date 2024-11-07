@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchCommentsByArticleId } from "../utils/api";
+import { fetchCommentsByArticleId, deleteComment } from "../utils/api";
 import CommentForm from "./CommentForm";
 
 export default function Comments() {
@@ -21,9 +21,25 @@ export default function Comments() {
     setComments((prevComments) => [newComment, ...prevComments]);
   };
 
+  const handleDeleteComment = (comment_id) => {
+    deleteComment(comment_id)
+      .then(() => {
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.comment_id !== comment_id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error deleting comment", error);
+        setError("Failed to delete comment. Please try again.");
+      });
+  };
+
+  const currentUsername = "grumpy19";
+
   if (comments.length === 0) {
     return <p>No comments yet. Be the first to comment!</p>;
   }
+
   return (
     <div className="comments-container">
       {" "}
@@ -36,6 +52,11 @@ export default function Comments() {
           {" "}
           <p>{comment.body}</p> <p>Author: {comment.author}</p>{" "}
           <p>Created at: {new Date(comment.created_at).toLocaleString()}</p>{" "}
+          {comment.author === currentUsername && (
+            <button onClick={() => handleDeleteComment(comment.comment_id)}>
+              Delete
+            </button>
+          )}
           <p>Likes: {comment.votes}</p>
         </div>
       ))}{" "}
