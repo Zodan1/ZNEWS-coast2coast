@@ -6,6 +6,8 @@ import CommentForm from "./CommentForm";
 export default function Comments() {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
+  const [commentMessage, setCommentMessage] = useState(null);
+  const [deleteMessage, setDeleteMessage] = useState(null);
 
   useEffect(() => {
     fetchCommentsByArticleId(article_id)
@@ -19,6 +21,10 @@ export default function Comments() {
 
   const handleCommentSubmit = (newComment) => {
     setComments((prevComments) => [newComment, ...prevComments]);
+    setCommentMessage("NICE!");
+    setTimeout(() => {
+      setCommentMessage(null);
+    }, 3000);
   };
 
   const handleDeleteComment = (comment_id) => {
@@ -27,6 +33,10 @@ export default function Comments() {
         setComments((prevComments) =>
           prevComments.filter((comment) => comment.comment_id !== comment_id)
         );
+        setDeleteMessage("Comment deleted successfully.");
+        setTimeout(() => {
+          setDeleteMessage(null);
+        }, 3000); // Clear message after 3 seconds })
       })
       .catch((error) => {
         console.error("Error deleting comment", error);
@@ -47,13 +57,18 @@ export default function Comments() {
         article_id={article_id}
         onCommentSubmit={handleCommentSubmit}
       />
+      {commentMessage && <p className="success">{commentMessage}</p>}
+      {deleteMessage && <p className="success">{deleteMessage}</p>}
       {comments.map((comment) => (
         <div key={comment.comment_id} className="comment-box">
           {" "}
           <p>{comment.body}</p> <p>Author: {comment.author}</p>{" "}
           <p>Created at: {new Date(comment.created_at).toLocaleString()}</p>{" "}
           {comment.author === currentUsername && (
-            <button onClick={() => handleDeleteComment(comment.comment_id)}>
+            <button
+              className="delete-button"
+              onClick={() => handleDeleteComment(comment.comment_id)}
+            >
               Delete
             </button>
           )}

@@ -67,7 +67,6 @@ export function postComment(article_id, { username, body }) {
       body,
     })
     .then((response) => {
-      console.log(response, "post response");
       return response.data.comment;
     })
     .catch((error) => {
@@ -78,7 +77,6 @@ export function deleteComment(comment_id) {
   return api
     .delete(`/comments/${comment_id}`)
     .then((response) => {
-      console.log(response);
       return response.data;
     })
     .catch((error) => {
